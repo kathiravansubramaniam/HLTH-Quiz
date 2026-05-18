@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'FH Oscar';
+  src: url('/fonts/FHOscar-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FH Oscar';
+  src: url('/fonts/FHOscar-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FH Oscar';
+  src: url('/fonts/FHOscar-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FH Oscar';
+  src: url('/fonts/FHOscar-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FH Oscar';
+  src: url('/fonts/FHOscar-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FH Oscar';
+  src: url('/fonts/FHOscar-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* Prevent text selection on interactive elements */
+.select-none {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Googly eye blink animation */
+@keyframes eyeBlink {
+  0%, 88%, 100% { transform: scaleY(1); }
+  93%            { transform: scaleY(0.06); }
+  96%            { transform: scaleY(1); }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #151F27;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #536575;
+  border-radius: 2px;
+}
