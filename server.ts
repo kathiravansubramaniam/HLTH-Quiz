@@ -183,6 +183,16 @@ app.prepare().then(() => {
       gameState.roundWinner = null;
     }
 
+    // On the last question, skip the reveal and go straight to final
+    const isLastSlide = slide === gameState.questions.length - 1;
+    if (isLastSlide) {
+      gameState.status        = 'final';
+      gameState.timerRunning  = false;
+      gameState.overallWinner = getOverallWinner(gameState.monsterSizes);
+      io.emit('state:full', { ...gameState });
+      return;
+    }
+
     // Start the reveal countdown — ticks down and auto-advances
     gameState.status       = 'revealing';
     gameState.timer        = REVEAL_SECONDS;

@@ -131,6 +131,8 @@ function MCQDisplay({
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
+const LOBBY_COUNTDOWN = 60;
+
 export default function HostPage() {
   const [gameState, setGameState] = useState<GameState>(INITIAL_STATE);
   const [wiggleTriggers, setWiggleTriggers] = useState<Record<string, number>>(
@@ -141,6 +143,7 @@ export default function HostPage() {
   const [mcqMonsterId, setMcqMonsterId] = useState<string>(
     () => GAME_CONFIG.monsters[Math.floor(Math.random() * GAME_CONFIG.monsters.length)].id
   );
+  const [lobbyTimer, setLobbyTimer] = useState(LOBBY_COUNTDOWN);
 
   useEffect(() => {
     const url = window.location.origin;
@@ -224,6 +227,26 @@ export default function HostPage() {
     );
   }, [gameState.currentSlide]);
 
+  // Lobby auto-start countdown
+  useEffect(() => {
+    if (gameState.status !== 'waiting') {
+      setLobbyTimer(LOBBY_COUNTDOWN);
+      return;
+    }
+    setLobbyTimer(LOBBY_COUNTDOWN);
+    const interval = setInterval(() => {
+      setLobbyTimer((prev) => {
+        if (prev <= 1) {
+          clearInterval(interval);
+          getSocket().emit('admin:start');
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [gameState.status]);
+
   const playUrl = appUrl && gameState.sessionId ? `${appUrl}/play/${gameState.sessionId}` : '';
 
   const currentQuestion = gameState.questions?.[gameState.currentSlide] ?? GAME_CONFIG.questions[gameState.currentSlide];
@@ -282,8 +305,8 @@ export default function HostPage() {
               <span className="text-[#536575] text-[24px] tracking-[-1px] uppercase">
                 {gameState.playerCount} players
               </span>
-              <div className="absolute left-1/2 -translate-x-1/2 bg-lime text-ink px-[45px] py-[17px] rounded-full font-bold text-[25px] tracking-[2.5px] uppercase whitespace-nowrap">
-                Press Space to Start
+              <div className="absolute left-1/2 -translate-x-1/2 bg-lime text-ink px-[45px] py-[17px] rounded-full font-bold text-[25px] tracking-[2.5px] uppercase whitespace-nowrap tabular-nums">
+                Starting in {lobbyTimer}s
               </div>
               {/* IDEO logo */}
               <div className="relative shrink-0" style={{ width: 150, height: 113 }}>
@@ -462,7 +485,7 @@ export default function HostPage() {
                   <motion.div key="reveal-pill"
                     initial={{ opacity: 0, scale: 0.85 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.85 }}
                     transition={{ duration: 0.3 }}
-                    className="absolute left-1/2 -translate-x-1/2 pointer-events-none">
+                    className="absolute inset-x-0 flex justify-center pointer-events-none">
                     <div className="bg-lime text-ink rounded-full px-[45px] py-[17px] font-oscar font-bold text-[25px] tracking-[2.5px] uppercase whitespace-nowrap">
                       Next question in {gameState.timer}s
                     </div>
@@ -494,11 +517,8 @@ export default function HostPage() {
             <div className="flex items-start justify-between px-12 pt-10 pb-4 shrink-0">
               {/* Left: big IDEO logo + title + body */}
               <div className="flex items-start gap-8">
-                <div className="relative shrink-0" style={{ width: 252, height: 190 }}>
-                  <img alt="I" src="/ideo/i.svg" className="absolute" style={{ width: 70, height: 70, left: 0,   top: 0   }} />
-                  <img alt="D" src="/ideo/d.svg" className="absolute" style={{ width: 70, height: 70, left: 60,  top: 60  }} />
-                  <img alt="E" src="/ideo/e.svg" className="absolute" style={{ width: 70, height: 70, left: 120, top: 120 }} />
-                  <img alt="O" src="/ideo/o.svg" className="absolute" style={{ width: 70, height: 70, left: 180, top: 60  }} />
+                <div className="shrink-0">
+                  <img src="/logo.svg" alt="IDEO" style={{ width: 200, height: 'auto' }} />
                 </div>
                 <div className="flex flex-col gap-3 max-w-2xl pt-2">
                   <h1 className="font-oscar font-bold text-lime leading-none" style={{ fontSize: 64 }}>

@@ -485,11 +485,8 @@ export default function PlayerPage() {
             className="flex-1 flex flex-col items-center justify-between px-6 pt-4 pb-6 min-h-0">
 
             {/* IDEO logo — centered */}
-            <div className="relative shrink-0 mx-auto" style={{ width: 162, height: 121 }}>
-              <img alt="I" src="/ideo/i.svg" className="absolute" style={{ width: 45, height: 45, left: 0,   top: 0  }} />
-              <img alt="D" src="/ideo/d.svg" className="absolute" style={{ width: 45, height: 45, left: 38,  top: 38 }} />
-              <img alt="E" src="/ideo/e.svg" className="absolute" style={{ width: 45, height: 45, left: 76,  top: 76 }} />
-              <img alt="O" src="/ideo/o.svg" className="absolute" style={{ width: 45, height: 45, left: 114, top: 38 }} />
+            <div className="shrink-0 mx-auto">
+              <img src="/logo.svg" alt="IDEO" style={{ width: 110, height: 'auto' }} />
             </div>
 
             {/* "Thanks for playing" label */}
