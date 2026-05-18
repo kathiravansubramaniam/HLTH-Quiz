@@ -11,7 +11,7 @@ export const QUESTIONS: QuestionConfig[] = [
 export const MONSTERS: MonsterConfig[] = [
   {
     id: 'cleo',
-    name: 'Cleo',
+    name: 'The Entrenched Complexity Monster',
     color: '#FF7B6E',
     blobPath: 'M 100 35 C 120 28 148 38 155 60 C 162 82 155 112 140 130 C 126 148 110 154 96 150 C 78 146 55 132 42 112 C 30 92 28 64 42 48 C 56 32 80 42 100 35 Z',
     eyeLeft: { cx: 80, cy: 78 },
@@ -24,7 +24,7 @@ export const MONSTERS: MonsterConfig[] = [
   },
   {
     id: 'buzz',
-    name: 'Buzz',
+    name: 'The Abominable Experience Monster',
     color: '#FFD93D',
     blobPath: 'M 100 25 C 124 20 150 40 156 66 C 162 92 154 122 140 140 C 126 158 108 162 92 158 C 72 154 50 140 42 118 C 34 96 36 68 48 50 C 60 32 80 30 100 25 Z',
     eyeLeft: { cx: 82, cy: 72 },
@@ -37,7 +37,7 @@ export const MONSTERS: MonsterConfig[] = [
   },
   {
     id: 'mossy',
-    name: 'Mossy',
+    name: 'The Infinite Triage Monster',
     color: '#6BCB77',
     blobPath: 'M 100 28 C 118 24 132 20 144 30 C 156 40 162 58 162 78 C 162 100 154 124 138 138 C 122 152 96 156 76 148 C 56 140 40 122 36 100 C 32 78 40 54 56 42 C 72 30 88 32 100 28 Z',
     eyeLeft: { cx: 82, cy: 76 },
@@ -50,7 +50,7 @@ export const MONSTERS: MonsterConfig[] = [
   },
   {
     id: 'luna',
-    name: 'Luna',
+    name: 'The Ingrained Barrier Monster',
     color: '#B8A0DF',
     blobPath: 'M 100 18 C 126 15 152 36 158 64 C 164 92 156 126 140 144 C 126 162 108 166 92 162 C 72 158 50 144 40 120 C 30 96 32 66 44 46 C 58 26 80 21 100 18 Z',
     eyeLeft: { cx: 80, cy: 70 },
@@ -63,7 +63,7 @@ export const MONSTERS: MonsterConfig[] = [
   },
   {
     id: 'pebble',
-    name: 'Pebble',
+    name: 'The Convoluted Comms Monster',
     color: '#FFAB76',
     blobPath: 'M 100 42 C 126 36 156 46 166 68 C 176 88 170 116 156 132 C 142 148 120 154 100 152 C 78 150 56 144 42 130 C 28 116 24 90 32 70 C 40 50 74 48 100 42 Z',
     eyeLeft: { cx: 82, cy: 82 },
@@ -76,7 +76,7 @@ export const MONSTERS: MonsterConfig[] = [
   },
   {
     id: 'pip',
-    name: 'Pip',
+    name: 'The Fragmented Systems Monster',
     color: '#E8A0BF',
     blobPath: 'M 100 16 C 122 12 146 32 152 58 C 158 84 152 118 140 138 C 130 158 116 166 100 164 C 84 162 70 154 60 136 C 48 116 44 84 50 58 C 56 32 80 20 100 16 Z',
     eyeLeft: { cx: 82, cy: 68 },
